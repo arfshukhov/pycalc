@@ -1,12 +1,19 @@
 def symbol_add(symbol: str, place):
     text = place.text() + symbol
-    text.setText(text)
+    place.setText(text)
 
 
-def execution(expression: str, place)-> str:
-    expression.replace("√", "sqrt")
-    result = exec(f"from math import *;{expression}")
-    place.setText(result)
+def execution(place):
+    expression = str(place.text())
+    expression=expression.replace("√", "sqrt")
+    expression=expression.replace("sqr", "pow")
+    print(expression)
+    exec(f"from math import *; result = {expression}; place.setText(str(result))")
+
+
+def break_expression(place):
+    place.setText("")
+
 
 
 
